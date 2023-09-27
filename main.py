@@ -55,9 +55,9 @@ def fetch_job_postings(location, category, batch):
         print("No data available.")
 
 if __name__ == "__main__":
-    location = "newyork"
-    category = "software/qa/dba/etc"
-    batch = "17-0-360-0-0"
+    location = "philadelphia"
+    category = "software/qa/dba/etc" # Please refer to the config.py file for another category
+    batch = "17-0-360-0-0" # This is the batch number for the location, more important than the location (variable) to fetch jobs from different location. You can get batches from craigslist and put them in the config.py file.
     
     job_postings = fetch_job_postings(location, category, batch)
 
