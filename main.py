@@ -3,7 +3,7 @@ from config import location_to_batch, category_to_abbreviation
 import csv
 import requests
 
-def fetch_job_postings(location, category, batch):
+def fetch_job_postings(location, category):
     base_url = "https://sapi.craigslist.org/web/v8/postings/search/full"
 
     # Get the batch value and category abbreviation from the mappings
@@ -24,7 +24,7 @@ def fetch_job_postings(location, category, batch):
         'sec-ch-ua-mobile': '?0',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36',
         'sec-ch-ua-platform': '"Windows"',
-        'Cookie': 'cl_b=4|c1f3482a2bf4a1b367abd45e5c44d10532e2d9df|16950580739tgOc'
+        'Cookie': f'cl_b=COOKIE VALUE'
     }
 
     response = requests.get(base_url, params=params, headers=headers)
@@ -56,10 +56,9 @@ def fetch_job_postings(location, category, batch):
 
 if __name__ == "__main__":
     location = "philadelphia"
-    category = "software/qa/dba/etc" # Please refer to the config.py file for another category
-    batch = "17-0-360-0-0" # This is the batch number for the location, more important than the location (variable) to fetch jobs from different location. You can get batches from craigslist and put them in the config.py file.
+    category = "skilled trades/artisan"
     
-    job_postings = fetch_job_postings(location, category, batch)
+    job_postings = fetch_job_postings(location, category)
 
     if job_postings:
        
